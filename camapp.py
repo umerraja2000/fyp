@@ -9,6 +9,7 @@ from threading import Thread
 
 global capture,switch
 capture=0
+switch=1
 
 #instatiate flask app  
 app = Flask(__name__, template_folder='./templates')
