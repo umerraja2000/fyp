@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Sign Language Recognition</title>
+    <style>
+      * {
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+  }
+
+  html, 
+  body {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    font-family: "Rubik";
+    background-color: #202124;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .container {
+    height: 100vh;
+    width: 100%;
+  }
+  .video_cover {
+    background-color: #36373a;
+    overflow: hidden;
+    max-width: 45rem;
+    max-height: 30rem;
+    border-radius: 1rem;
+    border: 4px solid #4f87e6;
+    margin: 20px;
+  }
+  #videoElement {
+    width: 100%;
+    height: 100%;
+  }
+
+  .video_area {
+    display: flex;
+    justify-content: center;
+    
+  }
+  textarea {
+    resize: none;
+    max-width: 35rem;
+    height: 4 rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    outline: none;
+    border: 4px solid #4f87e6;
+    margin: 0 0rem 0 5rem;
+    font-size: large;
+  }
+  
+  h2 {
+    text-align: center;
+    padding: 3rem;
+    font-size: 2rem;
+  }
+  .button_cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+.button {
+
+    border-radius: 100px;
+    color: rgb(236, 226, 226);
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 26px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button:hover {
+  transform: scale(1.05) rotate(-1deg);
+}
+
+
+.button1 {background-color: #36373a ;border-radius: 12px;} 
+.button2 {background-color: #f71d0e;border-radius: 12px;
+          margin-left: 50px;}
+    </style>
+
+  </head>
+ 
+<body>
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8  offset-lg-2">
+  
+        
+            <h2 class="mt-5">Sign Language Recognition</h2>
+            <img class="video_cover" src="{{ url_for('video_feed') }}" height="50%">
+            <form method="post" action="{{ url_for('tasks') }}">
+              <input class="button button2" type="submit" value="Stop/Start" name="stop" />
+              <input class="button button2" type="submit" value="Capture" name="click"/>        
+            </form>
+
+          </div>
+
+      </div>
+      
+  </div>
+      {% if prediction %}
+       <textarea id="w3review" name="w3review" rows="0"  cols="10" placeholder="" > {{prediction}} </textarea>
+      {% endif %}
+</body>
+</html>
